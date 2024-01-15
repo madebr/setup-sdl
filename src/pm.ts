@@ -109,7 +109,7 @@ class ApkPackageManager extends PackageManager {
 
 class BrewPackageManager extends PackageManager {
   constructor(executor: Executor) {
-    super({ executor: executor, type: PackageManagerType.Apk });
+    super({ executor: executor, type: PackageManagerType.Brew, sudo: false });
   }
 
   update() {

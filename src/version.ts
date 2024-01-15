@@ -298,6 +298,24 @@ export const project_descriptions: { [key in Project]: ProjectDescription } = {
     repo_owner: "libsdl-org",
     repo_name: "SDL_image",
     version_branch_map: { 2: "SDL2", 3: "main" },
+    packages: {
+      [pm.PackageManagerType.AptGet]: {
+        required: ["libjpeg-dev"],
+        optional: [],
+      },
+      [pm.PackageManagerType.Dnf]: {
+        required: ["libjpeg-devel"],
+        optional: [],
+      },
+      [pm.PackageManagerType.Msys2Pacman]: {
+        required: ["libjpeg"],
+        optional: [],
+      },
+      [pm.PackageManagerType.Brew]: {
+        required: ["jpeg"],
+        optional: [],
+      },
+    },
   },
   [Project.SDL_mixer]: {
     option_name: "version-sdl-mixer",
@@ -313,6 +331,34 @@ export const project_descriptions: { [key in Project]: ProjectDescription } = {
     repo_owner: "libsdl-org",
     repo_name: "SDL_mixer",
     version_branch_map: { 2: "SDL2", 3: "main" },
+    packages: {
+      [pm.PackageManagerType.AptGet]: {
+        required: [
+          "libopusfile-dev",
+          "libxmp-dev",
+          "libfluidsynth-dev",
+          "libwavpack-dev",
+        ],
+        optional: [],
+      },
+      [pm.PackageManagerType.Dnf]: {
+        required: [
+          "opusfile-devel",
+          "libxmp-devel",
+          "fluidsynth-devel",
+          "wavpack-devel",
+        ],
+        optional: [],
+      },
+      [pm.PackageManagerType.Msys2Pacman]: {
+        required: ["opusfile", "libxmp", "fluidsynth", "wavpack"],
+        optional: [],
+      },
+      [pm.PackageManagerType.Brew]: {
+        required: ["opusfile", "libxmp", "fluid-synth", "wavpack"],
+        optional: [],
+      },
+    },
   },
   [Project.SDL_net]: {
     option_name: "version-sdl-net",

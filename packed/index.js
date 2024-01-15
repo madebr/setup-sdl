@@ -1029,7 +1029,7 @@ var ApkPackageManager = /** @class */ (function (_super) {
 var BrewPackageManager = /** @class */ (function (_super) {
     __extends(BrewPackageManager, _super);
     function BrewPackageManager(executor) {
-        return _super.call(this, { executor: executor, type: PackageManagerType.Apk }) || this;
+        return _super.call(this, { executor: executor, type: PackageManagerType.Brew, sudo: false }) || this;
     }
     BrewPackageManager.prototype.update = function () {
         this.maybe_sudo_execute("brew update");
@@ -1362,7 +1362,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var _a, _b, _c;
+var _a, _b, _c, _d, _e;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.parse_version_string = exports.SdlRelease = exports.ReleaseDb = exports.ReleaseType = exports.project_descriptions = exports.VersionExtractor = exports.Project = exports.Version = exports.GitHubRelease = void 0;
 var child_process = __importStar(__nccwpck_require__(2081));
@@ -1608,6 +1608,24 @@ exports.project_descriptions = (_a = {},
         repo_owner: "libsdl-org",
         repo_name: "SDL_image",
         version_branch_map: { 2: "SDL2", 3: "main" },
+        packages: (_c = {},
+            _c[pm.PackageManagerType.AptGet] = {
+                required: ["libjpeg-dev"],
+                optional: [],
+            },
+            _c[pm.PackageManagerType.Dnf] = {
+                required: ["libjpeg-devel"],
+                optional: [],
+            },
+            _c[pm.PackageManagerType.Msys2Pacman] = {
+                required: ["libjpeg"],
+                optional: [],
+            },
+            _c[pm.PackageManagerType.Brew] = {
+                required: ["jpeg"],
+                optional: [],
+            },
+            _c),
     },
     _a[Project.SDL_mixer] = {
         option_name: "version-sdl-mixer",
@@ -1623,6 +1641,34 @@ exports.project_descriptions = (_a = {},
         repo_owner: "libsdl-org",
         repo_name: "SDL_mixer",
         version_branch_map: { 2: "SDL2", 3: "main" },
+        packages: (_d = {},
+            _d[pm.PackageManagerType.AptGet] = {
+                required: [
+                    "libopusfile-dev",
+                    "libxmp-dev",
+                    "libfluidsynth-dev",
+                    "libwavpack-dev",
+                ],
+                optional: [],
+            },
+            _d[pm.PackageManagerType.Dnf] = {
+                required: [
+                    "opusfile-devel",
+                    "libxmp-devel",
+                    "fluidsynth-devel",
+                    "wavpack-devel",
+                ],
+                optional: [],
+            },
+            _d[pm.PackageManagerType.Msys2Pacman] = {
+                required: ["opusfile", "libxmp", "fluidsynth", "wavpack"],
+                optional: [],
+            },
+            _d[pm.PackageManagerType.Brew] = {
+                required: ["opusfile", "libxmp", "fluid-synth", "wavpack"],
+                optional: [],
+            },
+            _d),
     },
     _a[Project.SDL_net] = {
         option_name: "version-sdl-net",
@@ -1668,20 +1714,20 @@ exports.project_descriptions = (_a = {},
         repo_owner: "libsdl-org",
         repo_name: "SDL_ttf",
         version_branch_map: { 2: "SDL2", 3: "main" },
-        packages: (_c = {},
-            _c[pm.PackageManagerType.AptGet] = {
+        packages: (_e = {},
+            _e[pm.PackageManagerType.AptGet] = {
                 required: ["libfreetype-dev", "libharfbuzz-dev"],
                 optional: [],
             },
-            _c[pm.PackageManagerType.Dnf] = {
+            _e[pm.PackageManagerType.Dnf] = {
                 required: ["freetype-devel", "harfbuzz-devel"],
                 optional: [],
             },
-            _c[pm.PackageManagerType.Msys2Pacman] = {
+            _e[pm.PackageManagerType.Msys2Pacman] = {
                 required: ["freetype", "harfbuzz"],
                 optional: [],
             },
-            _c),
+            _e),
     },
     _a);
 var ReleaseType;
