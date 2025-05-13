@@ -49,6 +49,10 @@ inputs:
     description: "Run commands as `$shell $file` (with $file containing the build commands)"
   discriminator:
     description: "Unique string to include in the GitHub SDL cache hash"
+  enable-cross-os-arch:
+    description: "An optional boolean when enabled, allows runners to save or restore caches that can be restored or saved respectively on other platforms"
+    default: "false"
+    required: false
   add-to-environment:
     description: "Add path of the SDL (shared) library to PATH/LD_LIBRARY_PATH/DYLD_LIBRARY_PATH"
     default: "false"

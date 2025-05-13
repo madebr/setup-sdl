@@ -281,6 +281,10 @@ function calculate_state_hash(args: {
     const v = core.getInput(key);
     inputs_state.push(`${key}=${v}`);
   }
+  if (!core.getInput("enable-cross-os-arch")) {
+    inputs_state.push(`arch=${os.arch()}`);
+    inputs_state.push(`platform=${os.platform()}`);
+  }
 
   const misc_state = [
     `GIT_HASH=${args.git_hash}`,
